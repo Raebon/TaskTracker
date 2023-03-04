@@ -13,10 +13,10 @@ function App() {
     <div
       className={`${primaryBackgroundColor} min-h-screen text-center ${primaryTextColor} flex flex-col justify-between`}
     >
-      <div>
+      <section>
         <Header />
         <PageContainer />
-      </div>
+      </section>
       <Footer />
     </div>
   );
