@@ -14,7 +14,7 @@ export const AddItem: React.FC<Props> = ({ value, onChange }) => {
           value={value}
           onChange={onChange}
           className={`block w-full rounded-lg border border-gray-300 bg-gray-50 p-4  text-sm text-gray-900 focus:outline-2 focus:outline-amber-500 `}
-          placeholder="Search"
+          placeholder="Start typing..."
           required
         />
         <button
