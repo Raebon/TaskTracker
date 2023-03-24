@@ -6,6 +6,9 @@ const App = React.lazy(() => import("../App"));
 const TrackingPage = React.lazy(
   () => import("../pages/TrackingPage/TrackingPage")
 );
+const DashboardPage = React.lazy(
+  () => import("../pages/DashboardPage/DashboardPage")
+);
 
 export const RoutesComponent = () => {
   return (
@@ -15,7 +18,8 @@ export const RoutesComponent = () => {
           <Routes>
             <Route path={``} element={<App />}>
               <Route path={`/`} element={<TrackingPage />} />
-              <Route path={`/home`} element={<TrackingPage />} />
+              <Route path={`/tracking`} element={<TrackingPage />} />
+              <Route path={`/dashboard`} element={<DashboardPage />} />
               <Route path={`*`} element={<div>Stránka nenalezena</div>} />
             </Route>
           </Routes>

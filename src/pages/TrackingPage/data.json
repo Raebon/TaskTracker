@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Tidy Town Taxis",
+    "active": false,
+    "time": 0,
+    "rate": 400,
+    "currency": "CZK"
+  },
+  {
+    "id": 2,
+    "name": "Paul's Popular Pizzeria",
+    "active": false,
+    "time": 0,
+    "rate": 400,
+    "currency": "CZK"
+  },
+  {
+    "id": 3,
+    "name": "Costalotta Coffee Shop",
+    "active": false,
+    "time": 0,
+    "rate": 400,
+    "currency": "CZK"
+  }
+]
