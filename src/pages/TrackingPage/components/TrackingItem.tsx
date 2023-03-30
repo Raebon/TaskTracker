@@ -21,25 +21,23 @@ export const TrackingItem: React.FC<Props> = ({
   setTimer,
   deleteItem,
 }) => {
-  const [timeElapsed, setTimeElapsed] = useState<number>(item.time as number);
-  const intervalRef = useRef<any>(null);
-
   const handleTimerOnClick = () => {
     toggleTimer();
-    let time = timeElapsed;
+    if (!item.active) {
+      // zastav počítání času
+      document.title = "Project Tracker";
+      let totalTime = 0;
+      item.outputs.forEach((val) => {
+        let diff = Math.ceil(
+          ((val.end as Date).getTime() - val.start.getTime()) / (1000 * 60)
+        );
+        totalTime = totalTime + diff;
+      });
+      setTimer({ id: item.id as number, time: totalTime });
+    }
     if (item.active) {
       //start počítání času
-      intervalRef.current = setInterval(() => {
-        setTimeElapsed((prevTime) => prevTime + 1);
-        time = time + 1;
-        document.title = `🔴 ${(time / 3600).toFixed(2)} - ${item.name}`;
-        console.log(time);
-      }, 1000);
-    } else {
-      document.title = "Project Tracker";
-      // zastav počítání času
-      setTimer({ id: item.id as number, time });
-      clearInterval(intervalRef.current);
+      document.title = `🔴In progress - ${item.name}`;
     }
   };
 
@@ -57,9 +55,9 @@ export const TrackingItem: React.FC<Props> = ({
         <div className="col-span-3 text-start">
           <span>{item.name}</span>
         </div>
-        <div>Time: {(timeElapsed / 3600).toFixed(2)}</div>
+        <div>Time: {((item.time ?? 0) / 60).toFixed(2)}</div>
         <div>
-          {(item.rate * (timeElapsed / 3600)).toFixed(2)} {item.currency}
+          {(item.rate * ((item.time ?? 0) / 60)).toFixed(2)} {item.currency}
         </div>
         <div className="flex justify-end gap-2">
           <IconButton onClick={handleTimerOnClick}>

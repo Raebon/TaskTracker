@@ -4,5 +4,11 @@ export type TrackItemType = {
   active?: boolean;
   time?: number;
   rate: number;
+  outputs: TrackOutputsDto[];
   currency: string;
+};
+
+type TrackOutputsDto = {
+  start: Date;
+  end?: Date;
 };

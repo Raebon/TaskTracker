@@ -31,6 +31,7 @@ export const AddItem: React.FC<Props> = ({ addProject }) => {
       name,
       rate,
       currency,
+      outputs: [],
     };
     addProject(payload);
     reset();

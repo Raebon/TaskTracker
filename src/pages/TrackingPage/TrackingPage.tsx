@@ -15,6 +15,7 @@ const TrackingPage = () => {
     id: 0,
     name: "",
     active: false,
+    outputs: [],
     time: 0,
     rate: 0,
     currency: "",
@@ -25,6 +26,14 @@ const TrackingPage = () => {
   const handleToggleActiveProject = (id: number) => {
     const toogleActiveProject = data.map((item) => {
       if (item.id === id) {
+        if (item.active) {
+          item.outputs[item.outputs.length - 1].end = new Date();
+        } else {
+          item.outputs.push({
+            start: new Date(),
+            end: undefined,
+          });
+        }
         item.active = !item.active;
       }
       return item;
