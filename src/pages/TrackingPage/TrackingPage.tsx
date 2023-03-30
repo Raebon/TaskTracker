@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TrackingItem, AddItem } from "./components/";
-//import jsonData from "./data.json";
 import { ConfirmModal } from "../../components/modal/ConfirmModal";
 import { TrackItemType } from "../../utils/types";
 
@@ -27,14 +26,15 @@ const TrackingPage = () => {
     const toogleActiveProject = data.map((item) => {
       if (item.id === id) {
         if (item.active) {
+          item.active = false;
           item.outputs[item.outputs.length - 1].end = new Date();
         } else {
           item.outputs.push({
             start: new Date(),
-            end: undefined,
+            end: new Date(),
           });
+          item.active = true;
         }
-        item.active = !item.active;
       }
       return item;
     });

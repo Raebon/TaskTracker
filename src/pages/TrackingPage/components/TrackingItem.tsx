@@ -63,9 +63,9 @@ export const TrackingItem: React.FC<Props> = ({
           <IconButton onClick={handleTimerOnClick}>
             {!item.active ? <PlayIcon /> : <PauseIcon />}
           </IconButton>
-          <IconButton>
+          {/*           <IconButton>
             <PencilIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton onClick={deleteItem}>
             <TrashIcon />
           </IconButton>
