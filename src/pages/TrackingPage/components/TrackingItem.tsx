@@ -26,13 +26,16 @@ export const TrackingItem: React.FC<Props> = ({
     if (!item.active) {
       // zastav počítání času
       document.title = "Project Tracker";
-      let totalTime = 0;
-      item.outputs.forEach((val) => {
-        let diff = Math.ceil(
-          ((val.end as Date).getTime() - val.start.getTime()) / (1000 * 60)
-        );
-        totalTime = totalTime + diff;
-      });
+      let totalTime = item.time ?? 0;
+
+      let diff = Math.ceil(
+        (new Date(item.outputs[item.outputs.length - 1].end as Date).getTime() -
+          new Date(item.outputs[item.outputs.length - 1].start).getTime()) /
+          (1000 * 60)
+      );
+      console.log(totalTime);
+      totalTime = totalTime + diff;
+
       setTimer({ id: item.id as number, time: totalTime });
     }
     if (item.active) {
